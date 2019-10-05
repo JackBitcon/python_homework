@@ -2,59 +2,83 @@ import os
 
 import csv
 
-csvpath = os.path.join("C:\\Users\\jackb\\Desktop\\python-challenge\\Pybank\\pybankcsv.csv" )
+voter_csv = os.path.join("C:\\Users\\jackb\\Desktop\\python-challenge\\Pypoll\\Pypoll_Resources_election_data.csv")
 
-#row = []
+total_votes = 0
 
-total = 0
+khan_votes = 0
 
-average_change = 0
+correy_votes = 0
 
-greatest_profit_increase = 0
+li_votes = 0
 
-greatest_profit_decrease = 0
+otooley_votes = 0
 
-number_of_months = 0
+khan_percent = 0
 
-with open(csvpath, newline="", errors='ignore') as csvfile:
-   
+correy_percent = 0
+
+li_percent = 0
+
+otooley_percent = 0
+
+with open(voter_csv, newline="", errors='ignore') as csvfile:
+
     csvreader = csv.reader(csvfile,delimiter=',')
     
     reader=next(csvreader)
     
     for row in csv.reader(csvfile):
-        
-        total+= int(row[1])
-        
-        number_of_months+=1
 
-        average_change = (total / number_of_months)
+        total_votes+=1
 
+        name = str(row[2])
 
-   
-    print("Total Months: ", + number_of_months)
+        if name == "Khan":
 
-    print("Total: $", + total)
+            khan_votes+=1
 
-    print("Average Change: $", + average_change)
+        if name == "Correy":
 
-    print("Greatest Profit Increase: $", greatest_profit_increase)
+            correy_votes+=1
 
-    print("Greatest Profit Decrease: $", greatest_profit_decrease)
+        if name == "Li":
 
-        
-       
+            li_votes +=1
 
+        if name == "O'Tooley":
 
+            otooley_votes+=1
 
+        khan_percent = float(khan_votes/total_votes)
+
+        correy_percent = float(correy_votes/total_votes)
+
+        li_percent = float(li_votes/total_votes)
+
+        otooley_percent = float(otooley_votes/total_votes)
+
+    print("Election Results: ")
+
+    print("-------------------------------")
     
+    print("Total Votes: ", + total_votes)
 
+    print("-------------------------------")
 
+    print(f"Khan: ", + khan_votes, "(",khan_percent,")")
 
+    print(f"Correy: ", + correy_votes, "(",correy_percent,")")
 
+    print(f"Li: ", + li_votes, "(",li_percent,")")
 
+    print(f"O'Tooley: ", + otooley_votes, "(",otooley_percent,")")
 
+    print("-------------------------------")
 
+    print("Winner: Khan")
+
+    print("-------------------------------")
 
 
 
